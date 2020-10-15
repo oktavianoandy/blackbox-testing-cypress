@@ -22,11 +22,10 @@ describe('Form filling testing', () => {
             .click();
 
         cy.contains('nb-card', 'Inline form')
-            .find('[type="submit"]')
+            .find('button')
             .click();
 
         cy.url().should('include', 'forms/layouts?')
-
     });
 
     it('Using the Grid testing ', () => {
@@ -34,8 +33,7 @@ describe('Form filling testing', () => {
         cy.contains('Forms').click();
         cy.contains('Form Layouts').click();
 
-        cy.contains('nb-card', 'Using the Grid')
-            .find('[data-cy="imputEmail1"]')
+        cy.get('#inputEmail1')
             .click()
             .type("Oktaviano@gmail.com");
 
@@ -43,14 +41,11 @@ describe('Form filling testing', () => {
             .click()
             .type("halo");
 
-        cy.contains('nb-card', 'Using the Grid')
-            .contains("Option 1")
-            .parent('nb-radio')
-            .find('.inner-circle')
+        cy.contains("Option 2")
             .click();
 
         cy.contains('nb-card', 'Using the Grid')
-            .find('[type="submit"]')
+            .find('button')
             .click();
 
         cy.url().should('include', 'forms/layouts?undefined=undefined');
@@ -61,22 +56,19 @@ describe('Form filling testing', () => {
         cy.contains('Forms').click();
         cy.contains('Form Layouts').click();
 
-        cy.contains('nb-card', 'Basic form')
-            .find('[id="exampleInputEmail1"]')
+        cy.get('#exampleInputEmail1')
             .click()
             .type("Oktaviano@gmail.com");
 
-        cy.contains('nb-card', 'Basic form')
-            .find('[id="exampleInputPassword1"]')
+        cy.get('#exampleInputPassword1')
             .click()
             .type("Halo");
 
-        cy.contains('nb-card', 'Basic form')
-            .find('.custom-checkbox')
+        cy.contains('Check me out')
             .click();
 
         cy.contains('nb-card', 'Basic form')
-            .find('[type="submit"]')
+            .find('button')
             .click();
 
         cy.url().should('include', 'forms/layouts?');
@@ -103,11 +95,10 @@ describe('Form filling testing', () => {
             .type("Ini pesan");
 
         cy.contains('nb-card', 'Form without labels')
-            .find('[type="submit"]')
+            .find('button')
             .click()
 
         cy.url().should('include', 'forms/layouts?')
-
     });
 
     it('Block form ', () => {
@@ -132,11 +123,10 @@ describe('Form filling testing', () => {
             .type("github.com/oktavianoandy");
 
         cy.contains('nb-card', 'Block form')
-            .find('[type="submit"]')
+            .find('button')
             .click()
         
         cy.url().should('include', 'forms/layouts')
-
     });
 
 });
